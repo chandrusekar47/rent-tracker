@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <groupId>perfectinn</groupId>
+    <artifactId>renttracker</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>apk</packaging>
+    <name>Rent Tracking app</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>android</artifactId>
+            <version>2.3.3</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+            </plugin>
+            <!-- signing  apk file -->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-jarsigner-plugin</artifactId>-->
+                <!--<version>1.2</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>signing</id>-->
+                        <!--<goals>-->
+                            <!--<goal>sign</goal>-->
+                        <!--</goals>-->
+                        <!--<phase>package</phase>-->
+                        <!--<inherited>true</inherited>-->
+                        <!--<configuration>-->
+                            <!--<includes>-->
+                                <!--<include>target/*.apk</include>-->
+                            <!--</includes>-->
+                            <!--<keystore>retail-dashboard-key.keystore</keystore>-->
+                            <!--<storepass>p@ssw0rd</storepass>-->
+                            <!--<keypass>p@ssw0rd</keypass>-->
+                            <!--<alias>retail-dashboard</alias>-->
+                            <!--<arguments>-->
+                                <!--<argument>-sigalg</argument>-->
+                                <!--<argument>MD5withRSA</argument>-->
+                                <!--<argument>-digestalg</argument>-->
+                                <!--<argument>SHA1</argument>-->
+                            <!--</arguments>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+            <plugin>
+                <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                <artifactId>android-maven-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <sdk>
+                        <!-- platform or api level (api level 4 = platform 1.6)-->
+                        <platform>10</platform>
+                    </sdk>
+                    <undeployBeforeDeploy>true</undeployBeforeDeploy>
+                    <sign>
+                        <debug>false</debug>
+                    </sign>
+                </configuration>
+                <extensions>true</extensions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
