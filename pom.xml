@@ -10,6 +10,13 @@
     <packaging>apk</packaging>
     <name>Rent Tracking app</name>
 
+    <repositories>
+        <repository>
+            <id>google-api-services</id>
+            <url>http://google-api-client-libraries.appspot.com/mavenrepo</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>com.google.android</groupId>
@@ -44,6 +51,25 @@
             <groupId>com.google.android.gms</groupId>
             <artifactId>google-play-services-jar</artifactId>
             <version>3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-drive</artifactId>
+            <version>v2-rev45-1.13.2-beta</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>xpp3</artifactId>
+                    <groupId>xpp3</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>httpclient</artifactId>
+                    <groupId>org.apache.httpcomponents</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>junit</artifactId>
+                    <groupId>junit</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
