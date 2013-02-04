@@ -17,6 +17,34 @@
             <version>2.3.3</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client</artifactId>
+            <version>1.13.2-beta</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>xpp3</artifactId>
+                    <groupId>xpp3</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>httpclient</artifactId>
+                    <groupId>org.apache.httpcomponents</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>junit</artifactId>
+                    <groupId>junit</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>android</artifactId>
+                    <groupId>com.google.android</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.google.android.gms</groupId>
+            <artifactId>google-play-services-jar</artifactId>
+            <version>3</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -29,34 +57,34 @@
             </plugin>
             <!-- signing  apk file -->
             <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-jarsigner-plugin</artifactId>-->
-                <!--<version>1.2</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>signing</id>-->
-                        <!--<goals>-->
-                            <!--<goal>sign</goal>-->
-                        <!--</goals>-->
-                        <!--<phase>package</phase>-->
-                        <!--<inherited>true</inherited>-->
-                        <!--<configuration>-->
-                            <!--<includes>-->
-                                <!--<include>target/*.apk</include>-->
-                            <!--</includes>-->
-                            <!--<keystore>retail-dashboard-key.keystore</keystore>-->
-                            <!--<storepass>p@ssw0rd</storepass>-->
-                            <!--<keypass>p@ssw0rd</keypass>-->
-                            <!--<alias>retail-dashboard</alias>-->
-                            <!--<arguments>-->
-                                <!--<argument>-sigalg</argument>-->
-                                <!--<argument>MD5withRSA</argument>-->
-                                <!--<argument>-digestalg</argument>-->
-                                <!--<argument>SHA1</argument>-->
-                            <!--</arguments>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-jarsigner-plugin</artifactId>-->
+            <!--<version>1.2</version>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<id>signing</id>-->
+            <!--<goals>-->
+            <!--<goal>sign</goal>-->
+            <!--</goals>-->
+            <!--<phase>package</phase>-->
+            <!--<inherited>true</inherited>-->
+            <!--<configuration>-->
+            <!--<includes>-->
+            <!--<include>target/*.apk</include>-->
+            <!--</includes>-->
+            <!--<keystore>retail-dashboard-key.keystore</keystore>-->
+            <!--<storepass>p@ssw0rd</storepass>-->
+            <!--<keypass>p@ssw0rd</keypass>-->
+            <!--<alias>retail-dashboard</alias>-->
+            <!--<arguments>-->
+            <!--<argument>-sigalg</argument>-->
+            <!--<argument>MD5withRSA</argument>-->
+            <!--<argument>-digestalg</argument>-->
+            <!--<argument>SHA1</argument>-->
+            <!--</arguments>-->
+            <!--</configuration>-->
+            <!--</execution>-->
+            <!--</executions>-->
             <!--</plugin>-->
             <plugin>
                 <groupId>com.jayway.maven.plugins.android.generation2</groupId>
