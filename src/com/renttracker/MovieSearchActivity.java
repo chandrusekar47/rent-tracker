@@ -7,13 +7,21 @@ import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.widget.*;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import java.util.Arrays;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.Scanner;
 
 public class MovieSearchActivity extends Activity {
+
     private ArrayAdapter<String> arrayAdapter;
-    private AsyncTask<String, Integer, String> movieSearchAsyncTask;
-    private EditText searchTextBox ;
+    private EditText searchTextBox;
     private ImageButton searchButton;
     private Activity activityContext;
 
@@ -23,69 +31,33 @@ public class MovieSearchActivity extends Activity {
         setContentView(R.layout.moviesearch);
         activityContext = this;
         searchButton = (ImageButton) findViewById(R.id.searchButton);
-        searchTextBox =  (EditText) findViewById(R.id.searchInput);
-        movieSearchAsyncTask = new AsyncTask<String, Integer, String>() {
-            @Override
-            protected String doInBackground(String... strings) {
-                Log.e(MainActivity.class.getName(), "background " + Thread.currentThread().getName() + " ARGS: " + Arrays.deepToString(strings));
-                return "DummyOutput";
-            }
-
-            @Override
-            protected void onPreExecute() {
-                Toast.makeText(activityContext, "preExecute ThreadName: " + Thread.currentThread().getName(), Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            protected void onPostExecute(String s) {
-                Toast.makeText(activityContext, "postExecute ThreadName: " + Thread.currentThread().getName() + " result: "+s, Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            protected void onProgressUpdate(Integer... values) {
-                super.onProgressUpdate(values);
-            }
-
-            @Override
-            protected void onCancelled() {
-                super.onCancelled();
-            }
-        };
-
-        final AsyncTask<String, Integer, String> secondAsyncTask = new AsyncTask<String, Integer, String>() {
-            @Override
-            protected String doInBackground(String... strings) {
-                Log.e(MainActivity.class.getName(), "background " + Thread.currentThread().getName() + " ARGS: " + Arrays.deepToString(strings));
-                return "DummyOutput";
-            }
-
-            @Override
-            protected void onPreExecute() {
-                Toast.makeText(activityContext, "preExecute ThreadName: " + Thread.currentThread().getName(), Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            protected void onPostExecute(String s) {
-                Toast.makeText(activityContext, "postExecute ThreadName: " + Thread.currentThread().getName() + " result: "+s, Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            protected void onProgressUpdate(Integer... values) {
-                super.onProgressUpdate(values);
-            }
-
-            @Override
-            protected void onCancelled() {
-                super.onCancelled();
-            }
-        };
-
+        searchTextBox = (EditText) findViewById(R.id.searchInput);
+        arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
+        ((ListView)findViewById(R.id.resultsHolder)).setAdapter(arrayAdapter);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Editable text = searchTextBox.getText();
-                movieSearchAsyncTask.execute(text.toString());
-                secondAsyncTask.execute(text.toString());
+                new AsyncTask<String, Integer, String>() {
+                    @Override
+                    protected String doInBackground(String... strings) {
+                        return "";
+                    }
+
+                    @Override
+                    protected void onPostExecute(String s) {
+                        Log.e("response : ", s);
+                        try {
+                            JSONArray jsonArray = new JSONObject(s).getJSONArray("movies");
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                arrayAdapter.add(jsonArray.getJSONObject(i).getString("title"));
+                            }
+                            arrayAdapter.notifyDataSetInvalidated();
+                        } catch (JSONException e) {
+                            Log.e("Json parsing", "", e);
+                        }
+                    }
+                }.execute(text.toString());
             }
         });
     }
