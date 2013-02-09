@@ -2,6 +2,7 @@ package com.renttracker;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,13 +45,19 @@ public class MovieListAdapter extends ArrayAdapter<Movie> {
             LayoutInflater layoutInflater = LayoutInflater.from(context);
             View resultRow = layoutInflater.inflate(R.layout.movieresultrow, parent, false);
             ImageView imageView = (ImageView) resultRow.findViewById(R.id.previewImage);
+
+            Typeface customTypeface = Typeface.createFromAsset(context.getAssets(), context.getString(R.string.CUSTOM_FONT_NAME));
+
             TextView titleHolder = (TextView) resultRow.findViewById(R.id.title);
             TextView yearHolder = (TextView) resultRow.findViewById(R.id.year);
             TextView ratingHolder = (TextView) resultRow.findViewById(R.id.rating);
             imageView.setBackgroundDrawable(urlReaderService.getDrawableFromURL(currentMovie.getThumbnailUrl()));
             titleHolder.setText(currentMovie.getName());
+            titleHolder.setTypeface(customTypeface);
             yearHolder.setText(currentMovie.getYearOfRelease());
+            yearHolder.setTypeface(customTypeface);
             ratingHolder.setText(currentMovie.getFormattedRating());
+            ratingHolder.setTypeface(customTypeface);
 
             if(currentMovie.getCriticRating() > MovieListAdapter.GOOD_MOVIE_THRESHOLD) {
                 ratingHolder.setTextColor(Color.GREEN);

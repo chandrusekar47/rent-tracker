@@ -3,4 +3,5 @@
     <string name="app_name">Movie Search</string>
     <string name="search_hint">Search by movie name</string>
     <string name="previewImage">Preview</string>
+    <string name="CUSTOM_FONT_NAME">segoeuilight.ttf</string>
 </resources>
