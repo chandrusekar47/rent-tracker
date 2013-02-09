@@ -172,7 +172,7 @@
   </component>
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/rent-tracker.iml" filepath="$PROJECT_DIR$/rent-tracker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/movie-searcher.iml" filepath="$PROJECT_DIR$/movie-searcher.iml" />
     </modules>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="Android 2.3.3 Platform" project-jdk-type="Android SDK">

@@ -1,14 +1,14 @@
 package com.renttracker;
 
-public class Movie {
+public class Movie implements Comparable<Movie> {
     private String name;
-    private String directorName;
+    private Double criticRating;
     private String yearOfRelease;
     private String thumbnailUrl;
 
-    public Movie(String name, String directorName, String yearOfRelease, String thumbnailUrl) {
+    public Movie(String name, Double criticRating, String yearOfRelease, String thumbnailUrl) {
         this.name = name;
-        this.directorName = directorName;
+        this.criticRating = criticRating;
         this.yearOfRelease = yearOfRelease;
         this.thumbnailUrl = thumbnailUrl;
     }
@@ -17,8 +17,8 @@ public class Movie {
         return name;
     }
 
-    public String getDirectorName() {
-        return directorName;
+    public Double getCriticRating() {
+        return criticRating;
     }
 
     public String getYearOfRelease() {
@@ -27,5 +27,14 @@ public class Movie {
 
     public String getThumbnailUrl() {
         return thumbnailUrl;
+    }
+
+    public String getFormattedRating() {
+        return criticRating <= 0 ? "N/A" : criticRating.toString();
+    }
+
+    @Override
+    public int compareTo(Movie movie) {
+        return movie.getCriticRating().compareTo(this.criticRating);
     }
 }

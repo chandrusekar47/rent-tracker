@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_margin="10dp">
+
+    <ImageView
+        android:id="@+id/previewImage"
+        android:layout_height="fill_parent"
+        android:layout_width="110dp"
+        android:contentDescription="@string/previewImage"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:textSize="30sp"
+            android:text="Fight Club"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:scrollHorizontally="true"/>
+
+        <TextView
+            android:id="@+id/year"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="2dp"
+            android:textSize="20sp"
+            android:text="1999"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:scrollHorizontally="true"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:textSize="14sp"
+            android:layout_marginTop="3dp"
+            android:text="Rating"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:scrollHorizontally="true"/>
+
+        <TextView
+            android:id="@+id/rating"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:textSize="60sp"
+            android:text="99.99"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:scrollHorizontally="true"/>
+    </LinearLayout>
+</LinearLayout>
