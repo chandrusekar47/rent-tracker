@@ -1,4 +1,4 @@
-package com.renttracker;
+package com.moviesearch;
 
 public class Movie implements Comparable<Movie> {
     private String name;

@@ -1,4 +1,4 @@
-package com.renttracker;
+package com.moviesearch;
 
 import android.content.Context;
 import android.graphics.Color;

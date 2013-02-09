@@ -1,4 +1,4 @@
-package com.renttracker;
+package com.moviesearch;
 
 import org.json.JSONArray;
 import org.json.JSONException;

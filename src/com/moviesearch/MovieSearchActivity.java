@@ -1,4 +1,4 @@
-package com.renttracker;
+package com.moviesearch;
 
 import android.app.Activity;
 import android.os.AsyncTask;
