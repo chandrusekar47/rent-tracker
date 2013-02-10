@@ -1,11 +1,13 @@
 package com.moviesearch;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -20,17 +22,33 @@ public class MovieSearchActivity extends Activity {
     private MovieListAdapter movieListAdapter;
     private EditText searchTextBox;
     private ImageButton searchButton;
-    private Activity activityContext;
+    private Activity context;
 
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.moviesearch);
-        activityContext = this;
         searchButton = (ImageButton) findViewById(R.id.searchButton);
         searchTextBox = (EditText) findViewById(R.id.searchInput);
         movieListAdapter = new MovieListAdapter(this, new ArrayList<Movie>());
-        ((ListView) findViewById(R.id.resultsHolder)).setAdapter(movieListAdapter);
+        ListView listView = (ListView) findViewById(R.id.resultsHolder);
+        listView.setAdapter(movieListAdapter);
+        listView.setClickable(true);
+        context = this;
+
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(context, MovieDetailsActivity.class);
+                intent.putExtra(getString(R.string.SELECTED_MOVIE_ID), movieListAdapter.getMovie(i).getId());
+                startActivity(intent);
+                Log.e("INFORMATION", " After Starting the activity ");
+                return false;
+            }
+        });
+
+
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

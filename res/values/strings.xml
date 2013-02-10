@@ -4,4 +4,5 @@
     <string name="search_hint">Search by movie name</string>
     <string name="previewImage">Preview</string>
     <string name="CUSTOM_FONT_NAME">segoeuilight.ttf</string>
+    <string name="SELECTED_MOVIE_ID">MOVIE_ID</string>
 </resources>

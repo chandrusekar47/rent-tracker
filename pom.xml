@@ -50,6 +50,8 @@
     <build>
         <finalName>${project.artifactId}</finalName>
 
+        <sourceDirectory>src</sourceDirectory>
+
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>

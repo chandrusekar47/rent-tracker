@@ -22,7 +22,7 @@ public class MovieSearchService {
         JSONArray movieJsonArray = output.getJSONArray("movies");
         for (int i = 0; i < movieJsonArray.length(); i++) {
             JSONObject movie = movieJsonArray.getJSONObject(i);
-            movieList.add(new Movie(movie.getString("title"), movie.getJSONObject("ratings").getDouble("critics_score"), movie.get("year").toString(), movie.getJSONObject("posters").getString("thumbnail")));
+            movieList.add(new Movie(movie.getString("id"), movie.getString("title"), movie.getJSONObject("ratings").getDouble("critics_score"), movie.get("year").toString(), movie.getJSONObject("posters").getString("thumbnail")));
         }
         return movieList;
     }

@@ -52,7 +52,7 @@ public class MovieListAdapter extends ArrayAdapter<Movie> {
             TextView yearHolder = (TextView) resultRow.findViewById(R.id.year);
             TextView ratingHolder = (TextView) resultRow.findViewById(R.id.rating);
             imageView.setBackgroundDrawable(urlReaderService.getDrawableFromURL(currentMovie.getThumbnailUrl()));
-            titleHolder.setText(currentMovie.getName());
+            titleHolder.setText(currentMovie.getTitle());
             titleHolder.setTypeface(customTypeface);
             yearHolder.setText(currentMovie.getYearOfRelease());
             yearHolder.setTypeface(customTypeface);
@@ -72,6 +72,10 @@ public class MovieListAdapter extends ArrayAdapter<Movie> {
             Log.e("EXCEPTION ", "      ", ex);
         }
         return convertView;
+    }
+
+    public Movie getMovie(int index) {
+        return this.values.get(index);
     }
 
     public void sort() {
