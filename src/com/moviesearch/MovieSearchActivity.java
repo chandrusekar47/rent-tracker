@@ -43,7 +43,6 @@ public class MovieSearchActivity extends Activity {
                 Intent intent = new Intent(context, MovieDetailsActivity.class);
                 intent.putExtra(getString(R.string.SELECTED_MOVIE_ID), movieListAdapter.getMovie(i).getId());
                 startActivity(intent);
-                Log.e("INFORMATION", " After Starting the activity ");
                 return false;
             }
         });
